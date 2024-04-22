@@ -22,3 +22,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 
 # Enable Apache modules
 RUN a2enmod rewrite
+
+# Get Composer
+COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
