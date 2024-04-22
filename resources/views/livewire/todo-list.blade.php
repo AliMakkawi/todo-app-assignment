@@ -22,6 +22,22 @@
             </div>
         @endif
     </div>
+    <div class="flex justify-center flex-wrap p-4">
+        <button class="
+                    bg-orange-500
+                    hover:bg-orange-700
+                    text-white
+                    text-sm
+                    font-bold
+                    p-2
+                    mr-1
+                    rounded-full"
+                wire:click="deleteDoneTodos"
+                wire:confirm="Are you sure you want to delete all the done to-dos?"
+        >
+            Delete Done To-dos
+        </button>
+    </div>
     <div class="w-2/3 mx-auto">
         <div class="bg-white shadow-md rounded-lg p-4">
             <div class="mb-4 shadow-lg bg-gray-200 p-4	">
