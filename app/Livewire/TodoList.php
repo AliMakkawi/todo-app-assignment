@@ -87,6 +87,18 @@ class TodoList extends Component
         $this->flashMessage('error', 'To-do task failed to update.');
 
     }
+
+    public function updateTodoStatus(Todo $todo, bool $checked): void
+    {
+        $wasUpdated = $this->todoRepository->updateTodoStatus($todo, $checked);
+
+        if($wasUpdated) {
+            $this->getAllTodos();
+            $this->flashMessage('success', 'To-do status successfully updated.');
+            return;
+        }
+        $this->flashMessage('error', 'To-do status failed to update.');
+    }
     public function render(): View
     {
         return view('livewire.todo-list');
