@@ -16,3 +16,6 @@ RUN apt-get update && apt-get install -y \
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring
+
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs
