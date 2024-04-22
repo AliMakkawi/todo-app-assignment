@@ -28,3 +28,6 @@ COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
 
 # Copy application code, respecting .dockerignore
 COPY . /var/www/html
+
+# Fix permissions
+RUN chmod -R 777 /var/www/html
