@@ -37,4 +37,9 @@ final class EloquentTodoRepository implements TodoRepository
         }
         return $todo->markAsPending();
     }
+
+    public function deleteTodo(Todo $todo): bool
+    {
+        return $todo->delete();
+    }
 }
