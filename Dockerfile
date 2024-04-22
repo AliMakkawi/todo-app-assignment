@@ -25,3 +25,6 @@ RUN a2enmod rewrite
 
 # Get Composer
 COPY --from=composer:2.7 /usr/bin/composer /usr/bin/composer
+
+# Copy application code, respecting .dockerignore
+COPY . /var/www/html
