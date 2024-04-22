@@ -28,3 +28,15 @@ down:
 		@echo "Shutting down all Docker containers..."
 		docker-compose down
 		@echo "Shutdown complete. All containers and networks have been removed."
+
+# Generate app key
+generate-key:
+	docker exec todo-app bash -c "php artisan key:generate"
+	@echo "Application key generated successfully."
+
+# Apply database migrations
+migrate:
+		@echo "Running database migrations..."
+		docker exec todo-app bash -c "php artisan migrate"
+		@echo "Database migrations completed successfully."
+
