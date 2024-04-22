@@ -41,3 +41,10 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 RUN sed -i -e 's|/var/www/html|${APACHE_DOCUMENT_ROOT}|g' /etc/apache2/sites-available/*.conf
 RUN sed -i -e 's|/var/www/|${APACHE_DOCUMENT_ROOT}|g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
+
+# Install Node packages and build assets
+RUN npm install
+RUN npm run build
+
+# Cleanup Node.js installation cache
+RUN npm cache clean --force
