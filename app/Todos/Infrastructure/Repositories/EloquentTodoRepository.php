@@ -29,4 +29,12 @@ final class EloquentTodoRepository implements TodoRepository
         $todo->task = $newTask;
         return $todo->update();
     }
+
+    public function updateTodoStatus(Todo $todo, bool $checked): bool
+    {
+        if($checked) {
+            return $todo->markAsDone();
+        }
+        return $todo->markAsPending();
+    }
 }
