@@ -20,4 +20,6 @@ interface TodoRepository
     public function deleteTodo(Todo $todo): bool;
 
     public function deleteDoneTodos(): bool;
+
+    public function deleteAllTodos(): bool;
 }

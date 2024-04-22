@@ -58,6 +58,18 @@ final class EloquentTodoRepository implements TodoRepository
             return $this->handleError($e, 'deleteDoneTodos', get_class($e));
         }
     }
+
+    public function deleteAllTodos(): bool
+    {
+        try {
+            return DB::transaction(function () {
+                Todo::query()->delete();
+                return true;
+            });
+        } catch (Exception $e) {
+            return $this->handleError($e, 'deleteAllTodos', get_class($e));
+        }
+    }
     private function handleError(Exception $e, string $context, string $type): bool
     {
         Log::error(
