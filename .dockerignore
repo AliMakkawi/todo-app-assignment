@@ -1,0 +1,16 @@
+# Exclude vendor, node modules and build directories
+vendor/
+node_modules/
+public/build/
+
+# Exclude example environment file
+.env.example
+
+# Exclude Editor directories
+.idea/
+.vscode/
+
+# Exclude git files
+.git/
+.gitattributes
+.gitignore
