@@ -8,4 +8,6 @@ use Illuminate\Support\Collection;
 interface TodoRepository
 {
     public function getAllTodos(): Collection;
+
+    public function addTodo(string $task): bool;
 }
