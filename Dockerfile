@@ -48,3 +48,6 @@ RUN npm run build
 
 # Cleanup Node.js installation cache
 RUN npm cache clean --force
+
+# Expose port 80 for HTTP traffic
+EXPOSE 80
