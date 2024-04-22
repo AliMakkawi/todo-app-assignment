@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 namespace App\Todos\Domain\Repositories;
+
+use App\Todos\Domain\Models\Todo;
 use Illuminate\Support\Collection;
 
 interface TodoRepository
@@ -10,4 +12,6 @@ interface TodoRepository
     public function getAllTodos(): Collection;
 
     public function addTodo(string $task): bool;
+
+    public function updateTodoTask(Todo $todo, string $newTask): bool;
 }

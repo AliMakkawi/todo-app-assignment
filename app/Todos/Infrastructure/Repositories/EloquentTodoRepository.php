@@ -23,4 +23,10 @@ final class EloquentTodoRepository implements TodoRepository
 
         return $todo->save();
     }
+
+    public function updateTodoTask(Todo $todo, string $newTask): bool
+    {
+        $todo->task = $newTask;
+        return $todo->update();
+    }
 }
