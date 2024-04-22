@@ -90,6 +90,7 @@
                             <td class="p-2">
                                 <input
                                     type="checkbox"
+                                    id="status-{{$todo->id}}"
                                     wire:change="updateTodoStatus({{$todo}}, $event.target.checked)"
                                     {{ $todo->status === \App\Todos\Domain\Enums\Status::DONE ? 'checked' : '' }}
                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
