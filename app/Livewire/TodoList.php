@@ -74,6 +74,19 @@ class TodoList extends Component
         }
         $this->flashMessage('error', 'Done To-dos failed to delete.');
     }
+
+    public function deleteAllTodos(): void
+    {
+        $wereDeleted = $this->todoRepository->deleteAllTodos();
+
+        if($wereDeleted) {
+            $this->getAllTodos();
+            $this->flashMessage('success', 'All To-dos successfully deleted.');
+            return;
+        }
+        $this->flashMessage('error', 'All To-dos failed to delete.');
+    }
+
     public function updateTodoTask(Todo $todo, string $task): void
     {
         $validator = Validator::make(['task' => $task], [

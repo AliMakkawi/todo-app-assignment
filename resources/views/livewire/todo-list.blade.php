@@ -37,6 +37,20 @@
         >
             Delete Done To-dos
         </button>
+        <button class="
+                    bg-red-500
+                    hover:bg-red-700
+                    text-white
+                    text-sm
+                    font-bold
+                    p-2
+                    ml-1
+                    rounded-full"
+                wire:click="deleteAllTodos"
+                wire:confirm="Are you sure you want to delete all the to-dos?"
+        >
+            Delete All To-dos
+        </button>
     </div>
     <div class="w-2/3 mx-auto">
         <div class="bg-white shadow-md rounded-lg p-4">
