@@ -1,3 +1,14 @@
+services:
+    #Application service: PHP, Apache and Node
+    application:
+        container_name: todo-app
+        build:
+            context: .
+        ports:
+            -  "80:80"
+        depends_on:
+            -   mysql-db
+
     #Database server
     mysql-db:
         container_name: todo-app-db
