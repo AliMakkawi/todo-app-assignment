@@ -22,4 +22,6 @@ interface TodoRepository
     public function deleteDoneTodos(): bool;
 
     public function deleteAllTodos(): bool;
+
+    public function countTodos(): int;
 }

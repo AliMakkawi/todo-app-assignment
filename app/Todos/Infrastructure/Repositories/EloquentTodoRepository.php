@@ -70,6 +70,12 @@ final class EloquentTodoRepository implements TodoRepository
             return $this->handleError($e, 'deleteAllTodos', get_class($e));
         }
     }
+
+    public function countTodos(): int
+    {
+        return Todo::count();
+    }
+
     private function handleError(Exception $e, string $context, string $type): bool
     {
         Log::error(
