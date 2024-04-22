@@ -16,3 +16,15 @@ up:
 		@echo "Starting all Docker containers..."
 		docker-compose up -d
 		@echo "Containers started successfully."
+
+# Stop all running containers without removing them
+stop:
+		@echo "Stopping all Docker containers..."
+		docker-compose stop
+		@echo "Containers have been stopped."
+
+# Bring down all services and remove containers and networks created by 'up'
+down:
+		@echo "Shutting down all Docker containers..."
+		docker-compose down
+		@echo "Shutdown complete. All containers and networks have been removed."
