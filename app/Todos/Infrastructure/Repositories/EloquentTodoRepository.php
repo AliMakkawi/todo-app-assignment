@@ -7,7 +7,11 @@ namespace App\Todos\Infrastructure\Repositories;
 use App\Todos\Domain\Enums\Status;
 use App\Todos\Domain\Models\Todo;
 use App\Todos\Domain\Repositories\TodoRepository;
+use Exception;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 final class EloquentTodoRepository implements TodoRepository
 {
     public function getAllTodos(): Collection
@@ -41,5 +45,27 @@ final class EloquentTodoRepository implements TodoRepository
     public function deleteTodo(Todo $todo): bool
     {
         return $todo->delete();
+    }
+
+    public function deleteDoneTodos(): bool
+    {
+        try {
+            return DB::transaction(function () {
+                $deleted = Todo::where('status', '=', Status::DONE)->delete();
+                return $deleted > 0;
+            });
+        } catch (Exception $e) {
+            return $this->handleError($e, 'deleteDoneTodos', get_class($e));
+        }
+    }
+    private function handleError(Exception $e, string $context, string $type): bool
+    {
+        Log::error(
+            "Error in $context ($type): " . $e->getMessage(),
+            [
+                'timestamp' => now()->toDateTimeString(),
+            ]
+        );
+        return false;
     }
 }

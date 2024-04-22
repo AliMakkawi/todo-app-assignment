@@ -18,4 +18,6 @@ interface TodoRepository
     public function updateTodoStatus(Todo $todo, bool $checked): bool;
 
     public function deleteTodo(Todo $todo): bool;
+
+    public function deleteDoneTodos(): bool;
 }
