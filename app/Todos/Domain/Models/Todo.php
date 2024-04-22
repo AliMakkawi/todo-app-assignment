@@ -12,4 +12,16 @@ class Todo extends Model
     protected $casts = [
         'status' => Status::class,
     ];
+
+    public function markAsPending(): bool
+    {
+        $this->status = Status::PENDING;
+        return $this->update();
+    }
+
+    public function markAsDone(): bool
+    {
+        $this->status = Status::DONE;
+        return $this->update();
+    }
 }
