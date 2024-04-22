@@ -99,6 +99,24 @@ class TodoList extends Component
         }
         $this->flashMessage('error', 'To-do status failed to update.');
     }
+
+    public function deleteTodo(Todo $todo): void
+    {
+        $wasDeleted = $this->todoRepository->deleteTodo($todo);
+
+        if($wasDeleted) {
+            $this->getAllTodos();
+            $this->flashMessage('success', 'To-do successfully deleted.');
+            return;
+        }
+        $this->flashMessage('error', 'To-do failed to delete.');
+    }
+
+    private function flashMessage(string $status, string $message): void
+    {
+        session()->flash($status, $message);
+    }
+
     public function render(): View
     {
         return view('livewire.todo-list');

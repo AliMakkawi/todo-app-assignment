@@ -75,6 +75,9 @@
                                 >
                             </td>
                             <td class="p-2">
+                                <button wire:click="deleteTodo({{$todo->id}})">
+                                    <x-heroicon-s-trash class="w-8 h-8" />
+                                </button>
                             </td>
                         </tr>
                     @empty
