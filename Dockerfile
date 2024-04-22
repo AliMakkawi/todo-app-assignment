@@ -31,3 +31,5 @@ COPY . /var/www/html
 
 # Fix permissions
 RUN chmod -R 777 /var/www/html
+# Install Composer dependencies
+RUN composer install --optimize-autoloader --no-dev
