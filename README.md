@@ -68,6 +68,11 @@ make migrate
 - **make generate-key** - Generates application key.
 - **make migrate** - Applies database migrations.
 
+### Accessing the Application
+
+After starting the application using Docker,
+you can access the To-Do List web application by navigating to: [localhost:8000](http://localhost:8000)
+
 
 ## Application Features
 
